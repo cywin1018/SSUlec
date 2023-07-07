@@ -1,0 +1,35 @@
+.navigation {
+    position: relative;
+    width: 340px;
+    height: 70px;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.navigation ul {
+    display: flex;
+    width: 340px;
+}
+.list{
+    position: relative;
+    list-style: none;
+    width: 80px;
+    height: 70px;
+    z-index: 1;
+}
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 500;
+    padding-top: 0.6rem;
+}
+.text{
+    font-size: 12px;
+    padding-top: 0.3rem;
+}
