@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    padding: 50px 10px;
+}
+.app {
+    height: 840px;
+    width: 340px;
+    background-color: #EBEFE4;
+    border: 1px solid #C4D7B2;
+}
+
+h1{
+    text-align: center;
+}
+button{
+    width: 280px;
+    margin-left: 30px;
+    height: 50px;
+    padding: 10px;
+    border:none;
+    background-color: #E1ECC8;
+    color: #A0C49D;
+    border-radius: 5px;
+    cursor:pointer;
+}
+.sign{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    transition-duration: 0.4s;
+}
+.google-sign{
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    transition-duration: 0.4s;
+}
+.google-sign text{
+    margin: 10px;
+}
+button:hover{
+    
+    background-color: #C4D7B2;
+}

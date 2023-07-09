@@ -2,7 +2,7 @@
     position: relative;
     width: 340px;
     height: 70px;
-    background: green;
+    background: #E1ECC8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,5 +31,6 @@
 }
 .text{
     font-size: 12px;
+    color: #A0C49D;
     padding-top: 0.3rem;
 }

@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MdOutlineHome } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { GiExitDoor } from "react-icons/gi";
@@ -10,24 +9,34 @@ export default function Nav() {
     <nav className="navigation">
       <ul>
         <li className="list">
-          <MdOutlineHome size="32px" />
-          <span className="text">홈</span>
+          <a href="/">
+            <MdOutlineHome size="32px" />
+            <span className="text">홈</span>
+          </a>
         </li>
         <li className="list">
-          <FiSearch size="32px" />
-          <span className="text">검색</span>
+          <a href="/">
+            <FiSearch size="32px" />
+            <span className="text">검색</span>
+          </a>
         </li>
         <li className="list">
-          <GiExitDoor size="32px" />
-          <span className="text">로그인</span>
+          <a href="/">
+            <GiExitDoor size="32px" />
+            <span className="text">로그인</span>
+          </a>
         </li>
         <li className="list">
-          <CgProfile size="32px" />
-          <span className="text">마이페이지</span>
+          <a>
+            <CgProfile size="32px" />
+            <span className="text">마이페이지</span>
+          </a>
         </li>
         <li className="list">
-          <BsGear size="32px" />
-          <span className="text">설정</span>
+          <a>
+            <BsGear size="32px" />
+            <span className="text">설정</span>
+          </a>
         </li>
       </ul>
     </nav>

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function Logo() {
   const styleH1 = {
     paddingTop: "1rem",
@@ -11,9 +9,7 @@ export default function Logo() {
   };
   return (
     <>
-      <Link to="/">
-        <h1 style={styleH1}>Ssulec</h1>
-      </Link>
+      <h1 style={styleH1}>Ssulec</h1>
     </>
   );
 }
