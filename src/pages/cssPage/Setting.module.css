@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Outer{
+    width: 340px;
+    height: 100vh;
+}
+.title{
+    position: relative;
+    padding: 2rem;
+}
+.optionList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.optionList li{
+    width: 340px;
+    list-style: none;
+    padding: 1rem;
+    border: 1px solid red;
+}

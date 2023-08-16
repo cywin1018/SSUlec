@@ -1,0 +1,23 @@
+#root{
+    box-sizing: border-box;
+}
+.BottomNavWrapper{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 340px;
+    height: 70px;
+    border:solid 1px red;
+    position: fixed;
+    bottom: 0;
+
+}
+
+.nav-item{
+    color: gray;
+}
+
+.active{
+    color:#ef5c89;
+}

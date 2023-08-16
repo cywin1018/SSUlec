@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Outer{
+    width: 340px;
+    height: 100vh;
+    
+}
+.title{
+    width: 300px;
+    border: 1px solid red;
+}
+.profile{
+    width: 100%;
+    border: 1px solid blue;
+}
+.bookMark{
+    width: 100%;
+    border: 1px solid green;
+}
+.myWord{
+    width: 100%;
+    border: 1px solid greenyellow;
+}

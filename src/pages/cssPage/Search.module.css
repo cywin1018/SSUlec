@@ -1,0 +1,43 @@
+
+.bodyControl{
+    width: 340px;
+    height: 100vh;
+}
+.Logo{
+    display: flex;
+    position: relative;
+    margin-top: 10;
+}
+.dropDowns{
+    list-style: none;
+    width: 60px;
+    height: 20px;
+    font-size: 0.7em;
+}
+.searchBar{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f8f7f5;
+    border-radius: 10px;
+    height: 2.5rem;
+    padding: 8px 32px 8px 12px;
+    margin-top:10%;
+    margin-left: 8%;
+
+}
+.wordInput{
+    background-color: transparent;
+    border:none;
+    outline: none;
+    height: 100%;
+    font-size: 1rem;
+}
+.icon{
+    cursor: pointer;
+    margin-left: 10%;
+}
+.searchBar:hover{
+    box-shadow: 1px 1px 1px 1px  #ebe9e6;
+}

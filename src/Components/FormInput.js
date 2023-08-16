@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./formInput.css";
+import styles from "./formInput.module.css";
 
 export default function FormInput(props) {
   const [focused, setFoucsed] = useState(false);
@@ -10,10 +10,11 @@ export default function FormInput(props) {
   };
 
   return (
-    <div className="formInput">
+    <div className={styles.formInput}>
       <label>{label}</label>
       {/*<label>Username</label>*/}
       <input
+        className={styles.InputItem}
         {...inputProps}
         onChange={onChange}
         onBlur={handleFocus}
@@ -21,8 +22,9 @@ export default function FormInput(props) {
           inputProps.name === "confirmPassword" && setFoucsed(true)
         }
         focused={focused.toString()}
+        autoComplete="off"
       />
-      <span>{errorMessage}</span>
+      <span className={styles.Message}>{errorMessage}</span>
     </div>
   );
 }

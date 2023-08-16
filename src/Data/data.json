@@ -1,0 +1,46 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "lau": "Spain",
+      "word": "gato",
+      "kor": "고양이",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "lau": "France",
+      "word": "chien",
+      "kor": "강아지",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "lau": "Germany",
+      "word": "Kalb",
+      "kor": "망아지",
+      "isDone": false
+    },
+    {
+      "lau": "스페인어",
+      "word": "data",
+      "kor": "데이터",
+      "isDone": false,
+      "id": 4
+    },
+    {
+      "lau": "독일어",
+      "word": "hallo",
+      "kor": "안녕",
+      "isDone": false,
+      "id": 5
+    },
+    {
+      "lau": "스페인어",
+      "word": "bamos",
+      "kor": "바모스",
+      "isDone": false,
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "user_id": "dld525@naver.com",
+      "user_password": "153qwe@",
+      "id": 1
+    },
+    {
+      "user_id": "youngwon0915@gmail.com",
+      "user_password": "1234qwe!",
+      "id": 2
+    },
+    {
+      "user_id": "cywin0821@naver.com",
+      "user_password": "456qwe@",
+      "id": 3
+    }
+  ]
+}

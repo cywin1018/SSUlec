@@ -1,0 +1,78 @@
+.Outer{
+    text-align: center;
+    width: 340px;
+    height: 100vh;
+}
+.title{
+    padding-top: 20%;
+}
+.laTitle{
+  padding-right: 60%;
+
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+label{
+    padding: 0.25rem;
+}
+.UserInput{
+    width: 280px;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    border:1px solid gray;
+    padding: 15px;
+}
+.wrapSave{
+    display: flex;
+    justify-content: right;
+   padding-right: 1rem;
+   margin: 1rem;
+}
+.find{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 5%;
+}
+.Or{
+    padding: 5%;
+    font-size: 16px;
+}
+.Login{
+    width: 280px;
+    height: 40px;
+    border:0.01em solid black;
+    border-radius: 5px;
+    cursor:pointer;
+    background-color: #fff;
+}
+.Login:hover{
+    background-color: #f6f0f0 ;
+}
+.googleBtn{
+    width: 280px;
+ 
+    border:none;
+    border-radius: 5px;
+    cursor:pointer;
+}
+.nsm7Bb-HzV7m-LgbsSe-MJoBVe{
+    opacity: 0,absolute;
+    justify-content: center;
+    width: 280px;
+    height: 50px;
+    outline: none;
+}
+
+.bar{
+    font-size: 12px;
+    padding: 1px;
+}
+.idSearch,.pwSearch{
+    font-size: 12px;
+   text-decoration: none;
+}

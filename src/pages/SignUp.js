@@ -1,29 +1,19 @@
 import { useState } from "react";
-import "./cssPage/SignUp";
-import FormInput from "./Components/FormInput";
-import Navbar from "./Components/Nav";
-import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
+import styles from "./cssPage/SignUp.module.css";
+import FormInput from "../Components/FormInput";
+import { useNavigate } from "react-router-dom";
+// import { FcGoogle } from "react-icons/fc";
 export default function SignUp() {
   const [values, setValues] = useState({
-    username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-
+  const navigate = useNavigate();
   const inputs = [
     {
       id: 1,
-      name: "username",
-      type: "text",
-      placeholder: "Username",
-      errorMessage: "아이디는 3-10자리 영어,숫자 혼합입니다.",
-      label: "Username",
-      pattern: "^[A-Za-z0-9]{3,10}$",
-      required: true,
-    },
-    {
-      id: 2,
       name: "email",
       type: "email",
       placeholder: "Email",
@@ -33,7 +23,7 @@ export default function SignUp() {
     },
 
     {
-      id: 3,
+      id: 2,
       name: "password",
       type: "password",
       placeholder: "Password",
@@ -43,7 +33,7 @@ export default function SignUp() {
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,16}",
     },
     {
-      id: 4,
+      id: 3,
       name: "confirmPassword",
       type: "password",
       placeholder: "ConfirmPassword",
@@ -54,21 +44,39 @@ export default function SignUp() {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = new FormData(e.target);
-    // console.log(Object.fromEntries(data.entries()));
+    await axios
+      .post(
+        "http://localhost:3030/users/",
+        {
+          user_id: values.email,
+          user_password: values.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          window.alert("회원가입완료!");
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("에러 발생:", error);
+      });
   };
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  // console.log(values);
   return (
     <>
-      <div className="app">
+      <div className={styles.app}>
         <form onSubmit={handleSubmit}>
-          <h1 className="title">회원가입</h1>
+          <h1 className={styles.title}>회원가입</h1>
           {inputs.map((input) => (
             <FormInput
               key={input.id}
@@ -77,14 +85,14 @@ export default function SignUp() {
               onChange={onChange}
             />
           ))}
-          <button className="sign">회원가입</button>
-          <h1>또는</h1>
-          <button className="google-sign">
-            <FcGoogle size="32px" />
-            <text>구글계정으로 회원가입</text>
-          </button>
+          <button className={styles.sign}>다음</button>
+          {/* <h1 className={styles.Or}>또는</h1>
+          <div className={styles.GoogleSignUp}>
+            <FcGoogle className={styles.GoogleIcon} />
+            <Link to="/" />
+            <text className={styles.GoogleText}>구글계정으로 회원가입</text>
+          </div> */}
         </form>
-        <Navbar />
       </div>
     </>
   );

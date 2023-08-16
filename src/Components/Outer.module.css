@@ -1,0 +1,13 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.AppOuter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AppContent{
+    height: 100vh;
+    border:1px solid green;
+}
