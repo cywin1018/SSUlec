@@ -2,43 +2,68 @@ import { useState } from "react";
 import styles from "./cssPage/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import GoogleLoginButton from "../Components/GoogleLoginButton";
 import UseFetch from "../Components/UseFetch";
 import { useUserContext } from "../Components/UserContext";
-
+// ==================== firebase import =================
+import { auth, googleProvider, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import {
+  signInWithPopup,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+// =====================================================
 export default function SignIn({ onLogin }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
-  const login = UseFetch(`http://localhost:3030/users/`);
+  // const login = UseFetch(`http://10.14.4.187:8080/user`);
   const { setUser } = useUserContext();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log("ok");
+  //   axios
+  //     .get("http://10.14.4.187:8080/user")
+  //     .then((res) => {
+  //       // let flag = false;
+  //       // for (let log of res.data._embedded.userList) {
+  //       //   if (log.email === Email && log.password === Password) {
+  //       //     window.alert("로그인성공!");
+  //       //     flag = true;
+  //       //     localStorage.setItem("isLoggedIn", true);
+  //       //     onLogin(true);
+  //       //     setUser({ email: Email });
+  //       //     navigate("/");
+  //       //   }
+  //       //   if (flag === false) {
+  //       //     window.alert("로그인실패!");
+  //       //   }
+  //       // }
+  //     })
+  //     .catch((error) => {
+  //       console.error("에러 발생:", error);
+  //     });
+  // };
+
+  // ==================== firebase code=================
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .get("http://localhost:3030/users/")
-      .then(() => {
-        let flag = false;
-        for (let log of login) {
-          // console.log(log);
-          // console.log(Email, Password, "입니다");
-          if (log.user_id === Email && log.user_password === Password) {
-            window.alert("로그인성공!");
-            flag = true;
-            localStorage.setItem("isLoggedIn", true);
-            onLogin(true);
-            setUser({ email: Email });
-            navigate("/");
-          }
-        }
-        if (flag === false) {
-          window.alert("로그인실패!");
-        }
-      })
-      .catch((error) => {
-        console.error("에러 발생:", error);
-      });
+    try {
+      await signInWithEmailAndPassword(auth, Email, Password);
+      onLogin(true);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
-
+  const signInWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className={styles.Outer}>
@@ -66,10 +91,9 @@ export default function SignIn({ onLogin }) {
               <label htmlFor="checkId"> 아이디 저장</label>
             </span>
             <button className={styles.Login}>로그인</button>
-            <h3 className={styles.Or}>또는</h3>
-
-            <button className={styles.googleBtn}>
-              <GoogleLoginButton />
+            <h1 className={styles.Or}>또는</h1>
+            <button className={styles.Login} onClick={signInWithGoogle}>
+              Google계정으로 로그인
             </button>
           </form>
           <div>

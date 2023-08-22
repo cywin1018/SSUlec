@@ -22,6 +22,7 @@ export default function App() {
     // 로컬 스토리지에서 로그인 상태 확인
     const storedLoggedIn = localStorage.getItem("isLoggedIn");
     if (storedLoggedIn === "true") {
+      console.log("로그인 유지중");
       setIsLoggedIn(true);
     }
   }, []);

@@ -1,14 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import styles from "./cssPage/SignUp.module.css";
 import FormInput from "../Components/FormInput";
 import { useNavigate } from "react-router-dom";
 // import { FcGoogle } from "react-icons/fc";
+// ==================== firebase import =================
+import { auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+// =====================================================
 export default function SignUp() {
   const [values, setValues] = useState({
     email: "",
     password: "",
     confirmPassword: "",
+    nickname: "",
   });
   const navigate = useNavigate();
   const inputs = [
@@ -42,40 +48,67 @@ export default function SignUp() {
       pattern: values.password,
       required: true,
     },
+    {
+      id: 4,
+      name: "nickname",
+      type: "text",
+      placeholder: "nickname",
+      errorMessage: "중복된 닉네임 입니다.",
+      label: "nickname",
+      required: true,
+    },
   ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .post(
-        "http://localhost:3030/users/",
-        {
-          user_id: values.email,
-          user_password: values.password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        if (res.status >= 200 && res.status < 300) {
-          window.alert("회원가입완료!");
-          navigate("/");
-        }
-      })
-      .catch((error) => {
-        console.error("에러 발생:", error);
-      });
+    // =============================== firebase ========================================
+    try {
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      const registerNickname = {
+        Email: values.email,
+        Nickname: values.nickname,
+      };
+      const docRef = doc(db, "personalData", values.nickname);
+      await setDoc(docRef, registerNickname);
+      console.log("데이터 추가 완료", registerNickname);
+    } catch (err) {
+      console.log(err);
+    }
+    // =============================== firebase ========================================
+    // axios.defaults.baseURL = "https://10.14.4.187:8080"; //스프링부트 연결용
+
+    // axios
+    //   .post(
+    //     "http://10.14.4.187:8080/user",
+    //     {
+    //       email: values.email,
+    //       password: values.password,
+    //       name: "최용원",
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     if (res.status >= 200 && res.status < 300) {
+    //       window.alert("회원가입완료!");
+    //       navigate("/");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("에러 발생:", error);
+    //   });
   };
+
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   return (
     <>
       <div className={styles.app}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <h1 className={styles.title}>회원가입</h1>
           {inputs.map((input) => (
             <FormInput
@@ -85,13 +118,9 @@ export default function SignUp() {
               onChange={onChange}
             />
           ))}
-          <button className={styles.sign}>다음</button>
-          {/* <h1 className={styles.Or}>또는</h1>
-          <div className={styles.GoogleSignUp}>
-            <FcGoogle className={styles.GoogleIcon} />
-            <Link to="/" />
-            <text className={styles.GoogleText}>구글계정으로 회원가입</text>
-          </div> */}
+          <button className={styles.sign} onClick={handleSubmit}>
+            다음
+          </button>
         </form>
       </div>
     </>
