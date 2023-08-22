@@ -37,8 +37,8 @@ h1{
 }
 
 .sign:hover{
-    
-    background-color: #472cde;
+    color: rgb(235, 243, 249);
+    background-color: #007bff;
 }
 .Or{
     font-size: 20px;

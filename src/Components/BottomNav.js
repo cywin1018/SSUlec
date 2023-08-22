@@ -25,11 +25,6 @@ export default function BottomNav() {
         </Link>
       </div>
       <div>
-        {/* <Link to="/signIn" className="nav-link" onClick={() => setActiveNav(3)}>
-          <GiExitDoor
-            className={activeNav === 3 ? "nav-item active" : "nav-item"}
-          />
-        </Link> */}
         <Link to="/signIn" className="nav-link" onClick={() => setActiveNav(3)}>
           <GiExitDoor
             className={activeNav === 3 ? "nav-item active" : "nav-item"}

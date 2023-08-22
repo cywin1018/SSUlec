@@ -1,12 +1,14 @@
 import styles from "./cssPage/MyPage.module.css";
+import { useState, useEffect } from "react";
 import UseFetch from "../Components/UseFetch";
 import axios from "axios";
 import { createContext, useContext } from "react";
 import { useUserContext } from "../Components/UserContext";
-
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 export default function MyPage() {
   const { user } = useUserContext();
-
+  const [wordData, setWordData] = useState([]);
   // const words = UseFetch(`http://localhost:8080/words`);
   // axios
   //   .get("http://localhost:8080/words/")
@@ -16,7 +18,23 @@ export default function MyPage() {
   //   .catch((error) => {
   //     console.error("에러 발생:", error);
   //   });
+  // useEffect(() => {
+  //   const fetchWordData = async () => {
+  //     try {
+  //       const docRef = doc(db, "word", "word");
+  //       const docSnap = await getDoc(docRef);
+  //       if (docSnap.exists()) {
+  //         setWordData(docSnap.data());
+  //       } else {
+  //         console.log("No such document!");
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching document:", err);
+  //     }
+  //   };
 
+  //   fetchWordData();
+  // }, []);
   return (
     <>
       <div className={styles.Outer}>
@@ -25,13 +43,13 @@ export default function MyPage() {
         <div className={styles.bookMark}>북마크 공간</div>
         <div className={styles.myWord}>
           <h3>내가 만든 단어장</h3>
-          {/* <ul>
-            {words.map((word) => (
-              <li key={word.id}>
-                {word.word} - {word.kor}
+          <ul>
+            {wordData.map((word, index) => (
+              <li key={index}>
+                언어: {word.lau} / 단어: {word.word} / 뜻: {word.kor}
               </li>
             ))}
-          </ul> */}
+          </ul>
         </div>
       </div>
     </>

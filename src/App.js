@@ -6,7 +6,6 @@ import Settings from "./pages/Settings";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import FindId from "./pages/FindId";
-import FindInputId from "./pages/FindInputId";
 import { Mobile, PC } from "./Components/MediaQuery";
 import { Routes, Route } from "react-router-dom";
 import styles from "./style.module.css";
@@ -35,7 +34,7 @@ export default function App() {
       <PC>
         <div className={styles.AppOuter}>
           <div className={styles.AppContent}>
-            {console.log(isLoggedIn)};
+            {console.log(isLoggedIn)}
             {isLoggedIn ? <BottomNavLog /> : <BottomNav />}
             <Routes>
               <Route path="/" element={<Main />} />
@@ -51,7 +50,7 @@ export default function App() {
               />
               <Route path="/FindId" element={<FindId />} />
               <Route path="/addWord" element={<AddWord />} />
-              <Route path="/FindInputId" element={<FindInputId />} />
+
               <Route path="/NewPassword" element={<NewPassword />} />
               <Route path="/MyPage" element={<MyPage />} />
             </Routes>

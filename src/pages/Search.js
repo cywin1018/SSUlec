@@ -24,7 +24,7 @@ export default function Search() {
     <>
       <div className={styles.content}>
         <section className={styles.bodyControl}>
-          <Logo className={styles.Logo} />
+          <h1 className={styles.Logo}>SSULEC</h1>
 
           <div className={styles.searchBar}>
             <input

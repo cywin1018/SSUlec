@@ -1,33 +1,40 @@
 import styles from "./cssPage/AddWord.module.css";
 import { useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function AddWord() {
-  function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
-
-    const requestData = {
+    const wordData = {
       lau: lauRef.current.value,
       word: wordRef.current.value,
       kor: korRef.current.value,
       isDone: false,
     };
-
-    axios
-      .post(`http://localhost:8080/words/`, requestData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        if (res.status >= 200 && res.status < 300) {
-          window.alert("생성이 완료되었습니다!");
-        }
-      })
-      .catch((error) => {
-        console.error("에러 발생:", error);
-      });
-  }
+    // axios
+    //   .post(`http://localhost:8080/words/`, requestData, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then((res) => {
+    //     if (res.status >= 200 && res.status < 300) {
+    //       window.alert("생성이 완료되었습니다!");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("에러 발생:", error);
+    //   });
+    try {
+      const docRef = doc(db, "wordData", "word");
+      await setDoc(docRef, wordData);
+      console.log("저장완료!");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const wordRef = useRef(null);
   const korRef = useRef(null);
   const lauRef = useRef(null);

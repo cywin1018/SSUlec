@@ -7,9 +7,16 @@
     width: 340px;
     height: 100vh;
 }
+.content {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 340px;
+  }
 .title{
+    font-size: 24px;
     position: relative;
     padding: 2rem;
+    color: #333;
 }
 .optionList{
     display: flex;
@@ -18,7 +25,28 @@
 }
 .optionList li{
     width: 340px;
+    border-bottom: 1px solid #ccc;
+    color: #555;
     list-style: none;
     padding: 1rem;
-    border: 1px solid red;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
+
+  .optionList li:hover {
+    background-color: #f8f8f8;
+  }
+  .optionList button {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .optionList button:hover {
+    background-color: #ff3333;
+  }

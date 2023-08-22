@@ -10,17 +10,35 @@
 }
 .title{
     width: 300px;
-    border: 1px solid red;
+    font-size: 24px;
+  padding-bottom: 20px;
+  padding-top: 30px;
 }
 .profile{
-    width: 100%;
-    border: 1px solid blue;
+    font-size: 18px;
+    padding-bottom: 20px;
 }
 .bookMark{
     width: 100%;
+    font-size: 18px;
+    padding-bottom: 20px;
     border: 1px solid green;
 }
 .myWord{
     width: 100%;
+    font-size: 18px;
     border: 1px solid greenyellow;
 }
+.myWord h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .myWord ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .myWord li {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }

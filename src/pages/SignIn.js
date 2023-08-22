@@ -1,24 +1,20 @@
 import { useState } from "react";
 import styles from "./cssPage/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import UseFetch from "../Components/UseFetch";
+// import axios from "axios";
+// import UseFetch from "../Components/UseFetch";
 import { useUserContext } from "../Components/UserContext";
 // ==================== firebase import =================
-import { auth, googleProvider, db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
-import {
-  signInWithPopup,
-  signOut,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
+
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 // =====================================================
 export default function SignIn({ onLogin }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
   // const login = UseFetch(`http://10.14.4.187:8080/user`);
-  const { setUser } = useUserContext();
+  // const { setUser } = useUserContext();
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   console.log("ok");
@@ -71,7 +67,7 @@ export default function SignIn({ onLogin }) {
           <h1 className={styles.title}>로그인</h1>
           <form className={styles["login-form"]} onSubmit={handleSubmit}>
             <label className={styles.laTitle} htmlFor="text">
-              Username
+              Email
             </label>
             <input
               className={styles.UserInput}
@@ -98,15 +94,10 @@ export default function SignIn({ onLogin }) {
           </form>
           <div>
             <ul className={styles.find}>
-              <li id="idSearch">
-                <Link to="/FindId" className={styles.idSearch}>
-                  아이디 찾기
-                </Link>
-              </li>
-
               <li id="pwSearch">
-                <Link to="/FindInputId" className={styles.pwSearch}>
-                  비밀번호 찾기
+                <p>비밀번호를 잊어버렸나요?</p>
+                <Link to="/FindId" className={styles.pwSearch}>
+                  비밀번호 재설정
                 </Link>
               </li>
             </ul>

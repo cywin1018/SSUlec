@@ -4,9 +4,8 @@
     height: 100vh;
 }
 .Logo{
-    display: flex;
-    position: relative;
-    margin-top: 10;
+
+ padding-top: 3rem;
 }
 .dropDowns{
     list-style: none;

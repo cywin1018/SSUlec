@@ -1,25 +1,37 @@
-import styles from "./cssPage/NewPassword.module.css";
-export default function NewPassword() {
-  return (
-    <>
-      <div className={styles.Outer}>
-        <h1 className={styles.title}>SSULEC</h1>
-        <h2 className={styles.passTitle}>비밀번호 재설정</h2>
+import { useState } from "react";
+import { auth } from "../firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-        <form>
+export default function NewPassword() {
+  const [email, setEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const navigate = useNavigate();
+
+  const onSetNewPass = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setEmailSent(true);
+    } catch (error) {
+      console.error("비밀번호 초기화 오류:", error);
+    }
+  };
+
+  return (
+    <div>
+      {emailSent ? (
+        <p>이메일을 확인하여 비밀번호 재설정 링크를 찾아보세요.</p>
+      ) : (
+        <div>
           <input
-            className={styles.password}
-            type="password"
-            placeholder="비밀번호 입력"
+            type="email"
+            placeholder="이메일 주소"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            className={styles.passConfirm}
-            type="password"
-            placeholder="비밀번호 확인"
-          />
-        </form>
-        <button className={styles.send}>confirm</button>
-      </div>
-    </>
+          <button onClick={onSetNewPass}>비밀번호 초기화</button>
+        </div>
+      )}
+    </div>
   );
 }
