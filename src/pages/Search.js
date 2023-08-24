@@ -5,9 +5,13 @@ import Logo from "../Components/Logo";
 import { BsSearch } from "react-icons/bs";
 import Dropdown from "../Components/Dropdown";
 import useClose from "../Components/useClose";
-export default function Search() {
+import useNaver from "../hooks/useAPIs";
+
+export default function Search({ search }) {
   // const [wordList, setWordList] = useState([]);
   // const [search, setSearch] = useState("");
+  const state = useNaver(search);
+  const { loading, data, error } = state;
   const dropDownRef = useRef();
   const [wordIdentify, setWordIdentify] = useState("");
   const lexioLists = ["스페인어", "프랑스어", "독일어"];
@@ -35,6 +39,19 @@ export default function Search() {
             />
             <BsSearch className={styles.icon} />
           </div>
+          <ul id="storeList">
+            {/* {data.map((item) => (
+              <li key={item.title}>
+                <strong>{item.title}</strong>
+                <p>{item.address}</p>
+                <p>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    {item.link}
+                  </a>
+                </p>
+              </li>
+            ))} */}
+          </ul>
           {/* <p className={styles.List}>
             {wordList
               .filter((item) => {

@@ -3,7 +3,7 @@ import { useRef } from "react";
 // import axios from "axios";
 import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
-
+import { v4 as uuidv4 } from "uuid";
 export default function AddWord() {
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +27,9 @@ export default function AddWord() {
     //   .catch((error) => {
     //     console.error("에러 발생:", error);
     //   });
+    const docId = uuidv4();
     try {
-      const docRef = doc(db, "wordData", "word");
+      const docRef = doc(db, "wordData", docId);
       await setDoc(docRef, wordData);
       console.log("저장완료!");
     } catch (err) {
