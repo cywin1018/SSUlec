@@ -6,17 +6,32 @@ import { BsSearch } from "react-icons/bs";
 import Dropdown from "../Components/Dropdown";
 import useClose from "../Components/useClose";
 import useNaver from "../hooks/useAPIs";
-
-export default function Search({ search }) {
+import { naver_ID, naver_PASS } from "../config";
+export default function Search() {
   // const [wordList, setWordList] = useState([]);
   // const [search, setSearch] = useState("");
-  const state = useNaver(search);
-  const { loading, data, error } = state;
-  const dropDownRef = useRef();
-  const [wordIdentify, setWordIdentify] = useState("");
-  const lexioLists = ["스페인어", "프랑스어", "독일어"];
-  const [isOpen, setIsOpen] = useClose(dropDownRef, false);
+  // const state = useNaver(search);
+  // const { loading, data, error } = state;
 
+  const [wordIdentify, setWordIdentify] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const url = "/v1/search/encyc.json" + "?query=" + String(wordIdentify);
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-Naver-Client-Id": naver_ID,
+          "X-Naver-Client-Secret": naver_PASS,
+        },
+      });
+      console.log(response);
+      setSearchResult(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // useEffect(() => {
   //   axios.get("https://pokeapi.co/api/v2/pokemon?limit=30").then((response) => {
   //     setWordList(response.data.results);
@@ -31,42 +46,24 @@ export default function Search({ search }) {
           <h1 className={styles.Logo}>SSULEC</h1>
 
           <div className={styles.searchBar}>
-            <input
-              className={styles.wordInput}
-              type="text"
-              placeholder="단어를 입력하세요."
-              // onChange={(e) => setSearch(e.target.value)}
-            />
-            <BsSearch className={styles.icon} />
+            <form onSubmit={onSubmit}>
+              <input
+                className={styles.wordInput}
+                type="text"
+                placeholder="단어를 입력하세요."
+                onChange={(e) => setWordIdentify(e.target.value)}
+              />
+              <button type="submit">
+                <BsSearch className={styles.icon} />
+              </button>
+            </form>
           </div>
           <ul id="storeList">
-            {/* {data.map((item) => (
-              <li key={item.title}>
-                <strong>{item.title}</strong>
-                <p>{item.address}</p>
-                <p>
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
-                    {item.link}
-                  </a>
-                </p>
-              </li>
-            ))} */}
+            {/*            
+            {searchResult && (
+              <li>{`검색결과 ${searchResult.data.items[0]}`}</li>
+            )} */}
           </ul>
-          {/* <p className={styles.List}>
-            {wordList
-              .filter((item) => {
-                if (search === "") {
-                  return item;
-                } else if (
-                  item.name.toLowerCase().includes(search.toLocaleLowerCase())
-                ) {
-                  return item;
-                }
-              })
-              .map((item) => {
-                return <h4>{item.name}</h4>;
-              })}
-          </p> */}
         </section>
       </div>
     </>
