@@ -4,3 +4,8 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+.title{
+    position: relative;
+    padding-top: 5%;
+    font-size: 32px;
+}

@@ -11,6 +11,7 @@ body{
 }
 .title{
     padding: 50px 10px;
+    font-size: 32px;
 }
 .app {
     height: 840px;

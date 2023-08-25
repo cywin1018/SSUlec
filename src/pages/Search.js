@@ -9,7 +9,7 @@ export default function Search() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const url =
-      "/v1/search/encyc.json" + "?display=6" + "&query=" + String(wordIdentify);
+      "/v1/search/encyc.json" + "?display=4" + "&query=" + String(wordIdentify);
     try {
       const response = await axios.get(url, {
         headers: {

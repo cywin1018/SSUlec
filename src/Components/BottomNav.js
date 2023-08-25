@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { BsGear } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { BeforeLog } from "../pages/BeforeLog";
 import "./BottomNav.css";
 export default function BottomNav() {
   const [activeNav, setActiveNav] = useState(1);
@@ -40,7 +41,7 @@ export default function BottomNav() {
       </div>
       <div>
         <Link
-          to="/settings"
+          to="/BeforeLog"
           className="nav-link"
           onClick={() => setActiveNav(5)}
         >

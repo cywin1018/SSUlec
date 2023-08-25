@@ -6,6 +6,7 @@ import Settings from "./pages/Settings";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import FindId from "./pages/FindId";
+import BeforeLog from "./pages/BeforeLog";
 import { Mobile, PC } from "./Components/MediaQuery";
 import { Routes, Route } from "react-router-dom";
 import styles from "./style.module.css";
@@ -14,7 +15,7 @@ import AddWord from "./pages/AddWord";
 import MyPage from "./pages/MyPage";
 import BottomNavLog from "./Components/BottomNavLog";
 import { UserProvider } from "./Components/UserContext";
-
+import PasswordChange from "./pages/PasswordChange";
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function App() {
 
   return (
     <UserProvider>
-      <PC>
+      <PC className={styles.pcOuter}>
         <div className={styles.AppOuter}>
           <div className={styles.AppContent}>
             {console.log(isLoggedIn)}
@@ -53,20 +54,38 @@ export default function App() {
 
               <Route path="/NewPassword" element={<NewPassword />} />
               <Route path="/MyPage" element={<MyPage />} />
+              <Route path="/BeforeLog" element={<BeforeLog />} />
+              <Route path="/PasswordChange" element={<PasswordChange />} />
             </Routes>
           </div>
         </div>
       </PC>
       <Mobile>
-        <div className="App">
-          <BottomNav />
-          <Routes>
-            <Route path="/" Component={Main} />
-            <Route path="/search" Component={Search} />
-            <Route path="/signIn" Component={SignIn} />
-            <Route path="/signUp" Component={SignUp} />
-            <Route path="/settings" Component={Settings} />
-          </Routes>
+        <div className={styles.AppOuter}>
+          <div className={styles.AppContent}>
+            {console.log(isLoggedIn)}
+            {isLoggedIn ? <BottomNavLog /> : <BottomNav />}
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/search" element={<Search />} />
+              <Route
+                path="/signIn"
+                element={<SignIn onLogin={handleLogin} />}
+              />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route
+                path="/settings"
+                element={<Settings onLogin={handleLogin} />}
+              />
+              <Route path="/FindId" element={<FindId />} />
+              <Route path="/addWord" element={<AddWord />} />
+
+              <Route path="/NewPassword" element={<NewPassword />} />
+              <Route path="/MyPage" element={<MyPage />} />
+              <Route path="/BeforeLog" element={<BeforeLog />} />
+              <Route path="/PasswordChange" element={<PasswordChange />} />
+            </Routes>
+          </div>
         </div>
       </Mobile>
     </UserProvider>

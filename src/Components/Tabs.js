@@ -37,9 +37,26 @@ export default function Tabs() {
             <h2>기초</h2>
             <hr />
             <span className="content-boxs">
-              <p>공간1</p>
-              <p>공간2</p>
-              <p>공간3</p>
+              <p>
+                <h3>기초 스페인어1</h3>
+              </p>
+              <p>
+                <h3>기초 스페인어2</h3>
+              </p>
+              <p>
+                <h3>기초 스페인어3</h3>
+              </p>
+            </span>
+            <span className="content-boxs">
+              <p>
+                <h3>기초 스페인어4</h3>
+              </p>
+              <p>
+                <h3>기초 스페인어5</h3>
+              </p>
+              <p>
+                <h3>기초 스페인어6</h3>
+              </p>
             </span>
           </div>
           <div
@@ -48,14 +65,26 @@ export default function Tabs() {
             <h2>중급</h2>
             <hr />
             <span className="content-boxs">
-              <p>공간1</p>
-              <p>공간2</p>
-              <p>공간3</p>
+              <p>
+                <h3>중급 스페인어1</h3>
+              </p>
+              <p>
+                <h3>중급 스페인어2</h3>
+              </p>
+              <p>
+                <h3>중급 스페인어3</h3>
+              </p>
             </span>
             <span className="content-boxs">
-              <p>공간1</p>
-              <p>공간2</p>
-              <p>공간3</p>
+              <p>
+                <h3>중급 스페인어4</h3>
+              </p>
+              <p>
+                <h3>중급 스페인어5</h3>
+              </p>
+              <p>
+                <h3>중급 스페인어6</h3>
+              </p>
             </span>
           </div>
           <div
@@ -64,9 +93,26 @@ export default function Tabs() {
             <h2>고급</h2>
             <hr />
             <span className="content-boxs">
-              <p>공간1</p>
-              <p>공간2</p>
-              <p>공간3</p>
+              <p>
+                <h3>고급 스페인어1</h3>
+              </p>
+              <p>
+                <h3>고급 스페인어2</h3>
+              </p>
+              <p>
+                <h3>고급 스페인어3</h3>
+              </p>
+            </span>
+            <span className="content-boxs">
+              <p>
+                <h3>고급 스페인어4</h3>
+              </p>
+              <p>
+                <h3>고급 스페인어5</h3>
+              </p>
+              <p>
+                <h3>고급 스페인어6</h3>
+              </p>
             </span>
           </div>
         </div>
