@@ -40,3 +40,37 @@
 .searchBar:hover{
     box-shadow: 1px 1px 1px 1px  #ebe9e6;
 }
+.resOuter {
+    padding-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .resContainer {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: calc(50% - 20px); /* Two items per row */
+    max-width: 200px;
+    transition: transform 0.2s ease;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  .resTitle {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .resImg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }

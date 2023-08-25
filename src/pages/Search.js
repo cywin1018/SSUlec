@@ -1,23 +1,15 @@
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import styles from "./cssPage/Search.module.css";
-import Logo from "../Components/Logo";
 import { BsSearch } from "react-icons/bs";
-import Dropdown from "../Components/Dropdown";
-import useClose from "../Components/useClose";
-import useNaver from "../hooks/useAPIs";
 import { naver_ID, naver_PASS } from "../config";
 export default function Search() {
-  // const [wordList, setWordList] = useState([]);
-  // const [search, setSearch] = useState("");
-  // const state = useNaver(search);
-  // const { loading, data, error } = state;
-
   const [wordIdentify, setWordIdentify] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const onSubmit = async (e) => {
     e.preventDefault();
-    const url = "/v1/search/encyc.json" + "?query=" + String(wordIdentify);
+    const url =
+      "/v1/search/encyc.json" + "?display=6" + "&query=" + String(wordIdentify);
     try {
       const response = await axios.get(url, {
         headers: {
@@ -26,18 +18,12 @@ export default function Search() {
           "X-Naver-Client-Secret": naver_PASS,
         },
       });
-      console.log(response);
+
       setSearchResult(response.data);
     } catch (err) {
       console.log(err);
     }
   };
-  // useEffect(() => {
-  //   axios.get("https://pokeapi.co/api/v2/pokemon?limit=30").then((response) => {
-  //     setWordList(response.data.results);
-  //     // console.log(response);
-  //   });
-  // }, []);
 
   return (
     <>
@@ -58,12 +44,24 @@ export default function Search() {
               </button>
             </form>
           </div>
-          <ul id="storeList">
-            {/*            
-            {searchResult && (
-              <li>{`검색결과 ${searchResult.data.items[0]}`}</li>
-            )} */}
-          </ul>
+          <div className={styles.resOuter}>
+            {searchResult &&
+              searchResult.items.map((res, index) => (
+                <div key={index} className={styles.resContainer}>
+                  <h3
+                    className={styles.resTitle}
+                    dangerouslySetInnerHTML={{ __html: res.title }}
+                  />
+                  {res.thumbnail && (
+                    <img
+                      className={styles.resImg}
+                      src={res.thumbnail}
+                      alt="thumbnail"
+                    />
+                  )}
+                </div>
+              ))}
+          </div>
         </section>
       </div>
     </>
