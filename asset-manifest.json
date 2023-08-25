@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SSUlec/static/css/main.31b445f6.css",
+    "main.js": "/SSUlec/static/js/main.f9d53b0b.js",
+    "static/js/787.28cb0dcd.chunk.js": "/SSUlec/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/SSUlec/index.html",
+    "main.31b445f6.css.map": "/SSUlec/static/css/main.31b445f6.css.map",
+    "main.f9d53b0b.js.map": "/SSUlec/static/js/main.f9d53b0b.js.map",
+    "787.28cb0dcd.chunk.js.map": "/SSUlec/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31b445f6.css",
+    "static/js/main.f9d53b0b.js"
+  ]
+}
