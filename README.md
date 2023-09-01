@@ -26,5 +26,9 @@ React, Firebase, 네이버API
 비밀번호 재설정 및 찾기를 하는 경우, 이메일 인증을 받는데 이메일 인증을 받으면 다음 버튼을 누를수 있도록 할려고 했는데,
 이메일 인증과 다음버튼이 독립적으로 작동하는 부분이 아쉬웠다.
 
+깃허브 페이지에 배포를 했는데, 경로가 잘못된건지 들어가면 아래의 링크(github.io/ssulec)로 들어가진다.
+<img width="994" alt="스크린샷 2023-09-01 132615" src="https://github.com/cywin1018/SSUlec/assets/118504207/48ed7831-b204-46e9-9f16-d0a712bd7e86">
+실제로는 저 주소가 아닌 github.io로 들어가야 내가 생각했던 홈 화면이 보인다.
+
 ### 디자인툴 : Figma 사용
 <img width="472" alt="스크린샷 2023-09-01 131317" src="https://github.com/cywin1018/SSUlec/assets/118504207/f7c3cb49-a322-4d0f-a5e4-ceeccad88fb8">
