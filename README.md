@@ -35,4 +35,4 @@ React, Firebase, 네이버API
 <img width="472" alt="스크린샷 2023-09-01 131317" src="https://github.com/cywin1018/SSUlec/assets/118504207/f7c3cb49-a322-4d0f-a5e4-ceeccad88fb8">
 
 ## 깃허브 페이지 배포 링크
-<a>https://cywin1018.github.io/</a>
+<a>[https://cywin1018.github.io/](https://cywin1018.github.io/SSUlec/)https://cywin1018.github.io/SSUlec/</a>
