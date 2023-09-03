@@ -1,13 +1,23 @@
 # 단어 공부 웹앱 토이 프로젝트 - SSULEC
 React + Firebase를 이용한 프로젝트
 ## 프로젝트 소개
-모바일을 우선적으로 생각해서 만든 웹프로젝트로 리액트를 사용하여 보이는 부분을 작성하고 파이어베이스를 이용하여 서버 파트 구성함.
+모바일을 우선적으로 생각해서 만든 웹프로젝트, 리액트를 사용하여 보이는 부분을 작성하고 파이어베이스를 이용하여 서버 파트 구성함.
+토익을 위해 다양한 단어 앱들을 사용해 보면서, 영어 앱은 많이 있는데 제2외국어에 해당하는 언어들의 앱은 없다는 생각이 들어 만들게 됨.
 ## 개발기간
 6.26 ~ 8.26
 ## 멤버 구성
 cywin1018 
-## 개발 환경
-React, Firebase, 네이버API
+## 사용한 기술들
+**React**  
+- React-Router-dom : 하단 네비게이션 바에서 페이지 이동
+- Context API : 로그인 유지용
+
+**Firebase**
+- Authentication : 구글로그인, 회원가입, 일반로그인
+- CloudFirestore : 단어 저장, 회원가입 정보 저장
+  
+**네이버API**  
+- 지식백과 검색 : 단어뜻 검색용으로 사전 api를 의도하였으나 지식백과가 있어서 대체
 ### 주요기능
 
 홈화면 : 첫화면에서 로그인을 하지 않아도 추천단어장을 볼 수 있으며, 로그인을 하면 단어를 북마크 할 수 있다. <br/>
@@ -30,6 +40,22 @@ React, Firebase, 네이버API
 <img width="994" alt="스크린샷 2023-09-01 132615" src="https://github.com/cywin1018/SSUlec/assets/118504207/48ed7831-b204-46e9-9f16-d0a712bd7e86">
 실제로는 저 주소가 아닌 github.io로 들어가야 내가 생각했던 홈 화면이 보인다.
 <img width="976" alt="스크린샷 2023-09-01 132640" src="https://github.com/cywin1018/SSUlec/assets/118504207/1e0ba416-1e2c-4cb4-8604-dce2b8fcccf9">
+
+### 스프링부트로 연결해보기
+파이어베이스로만 연결해보기는 아쉬움이 남아, 동기의 도움으로 스프링으로 연결해보았다.
+<br/>
+<img width="313" alt="스크린샷 2023-08-25 201606" src="https://github.com/cywin1018/SSUlec/assets/118504207/7e874dfa-29a2-4729-bac6-3ca7aba85bdc">
+<br/>
+파이어베이스로 연결해볼때는 일어나지 않았던 CORS 오류가 계속해서발생하였다.
+<img width="1055" alt="지랄같은cors" src="https://github.com/cywin1018/SSUlec/assets/118504207/858c77cf-386d-4395-bd58-114f8e072be9">
+해결책으로 cloud shell을 이용하면 해결된다는 글을 보고 시도하였고 cors오류는 해결되었으나 다른 문제들이 계속해서 발생하였다.
+
+<img width="595" alt="2023-08-28_134137" src="https://github.com/cywin1018/SSUlec/assets/118504207/109fea76-e109-4d48-a55e-9d1641205c32">
+
+### 해결방법
+configuration.setAllowedOrigins(List.of("http://외부 아이피:3000"));를 로컬호스트로 바꾸니 해결되었다.
+configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+
 
 ### 디자인툴 : Figma 사용
 <img width="472" alt="스크린샷 2023-09-01 131317" src="https://github.com/cywin1018/SSUlec/assets/118504207/f7c3cb49-a322-4d0f-a5e4-ceeccad88fb8">
